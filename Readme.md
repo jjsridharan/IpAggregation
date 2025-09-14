@@ -178,7 +178,7 @@ dotnet build
 dotnet test
 ```
 
-To generate example visualizations, run the `VisualizeTrie` helper (see `examples/VisualizeTrie.cs`) and render the produced `.dot` files using Graphviz.
+To generate example visualizations, run the `VisualizeTrie` helper (see `Benchmark.IpAggregation/Program.cs::VisualizeTrie`) and render the produced `.dot` files using Graphviz.
 
 ---
 
