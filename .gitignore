@@ -1,0 +1,47 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Rider
+.idea/
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# NuGet packages
+*.nupkg
+packages/
+*.snupkg
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Test results
+TestResults/
+*.trx
+
+# Others
+*.cache
+*.pdb
+*.mdb
+*.ilk
+*.idb
+*.class
+*.exe
+*.dll
+*.obj
+*.log
+
+# Ignore all bin/ and obj/ recursively
+**/bin/
+**/obj/

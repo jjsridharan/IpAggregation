@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Bechmark.IpAggregation.IncrementalOperationsBenchmark-20250914-203222</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.2, Windows 11 (10.0.22631.5909/23H2/2023Update/SunValley3) (Hyper-V)
+Intel Xeon Platinum 8370C CPU 2.80GHz (Max: 2.79GHz), 1 CPU, 16 logical and 8 physical cores
+.NET SDK 9.0.305
+  [Host]     : .NET 8.0.20 (8.0.2025.41914), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+  Job-JSMOCL : .NET 8.0.20 (8.0.2025.41914), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+  Job-DUAGUC : .NET 8.0.20 (8.0.2025.41914), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+</code></pre>
+<pre><code>Runtime=.NET 8.0  InvocationCount=1  MaxIterationCount=16  
+UnrollFactor=1  
+</code></pre>
+
+<table>
+<thead><tr><th>Method               </th><th>Job </th><th>Arguments</th><th>LaunchCount</th><th>WarmupCount</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Remove100NodesIncrementally</td><td>Job-JSMOCL</td><td>/nowarn:CS1591</td><td>Default</td><td>Default</td><td>109.39 &mu;s</td><td>67.93 &mu;s</td><td>63.54 &mu;s</td><td>77.55 &mu;s</td><td>10.47 KB</td>
+</tr><tr><td>Remove100NodesIncrementally</td><td>Job-DUAGUC</td><td>Default</td><td>1</td><td>1</td><td>97.31 &mu;s</td><td>53.74 &mu;s</td><td>50.27 &mu;s</td><td>73.10 &mu;s</td><td>10.47 KB</td>
+</tr></tbody></table>
+</body>
+</html>
