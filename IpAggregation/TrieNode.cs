@@ -310,13 +310,11 @@ namespace IpAggregation
                     color = "lightblue";
                 }
 
-                if (curr.IsAggregate || curr.IsLeaf || curr.IsExported || 1 == 1)
-                {
-                    TrieNode parent = visited.Contains(curr.Parent) ? curr.Parent : this;
-                    sb.AppendLine($"\"{curr.Prefix}\" [label=\"{nodeLabel}\" style=filled fillcolor={color} rank={curr.Prefix.MaskLength}];");
-                    sb.AppendLine($"\"{parent.Prefix}\" -> \"{curr.Prefix}\";");
-                    visited.Add(curr);
-                }
+                
+                TrieNode parent = visited.Contains(curr.Parent) ? curr.Parent : this;
+                sb.AppendLine($"\"{curr.Prefix}\" [label=\"{nodeLabel}\" style=filled fillcolor={color} rank={curr.Prefix.MaskLength}];");
+                sb.AppendLine($"\"{parent.Prefix}\" -> \"{curr.Prefix}\";");
+                visited.Add(curr);
 
                 for (int i = 1; i >= 0; i--)
                 {

@@ -57,6 +57,15 @@ The actual implementation here is different and adapted for incremental, streami
 
 The library provides `TrieNode.ToDotGraphFile(path)` which emits a DOT graph. This lets you visually inspect aggregation behavior. The code can be extended to emit a dot graph for each iteration to visualize animation of the aggregation process.
 
+
+### Node color legend
+
+<p><span style="background-color: lightgreen; padding: 2px 6px; border-radius: 3px;">L</span> — Leaf node (IsLeaf)</p>
+<p><span style="background-color: orange; padding: 2px 6px; border-radius: 3px;">A</span> — Aggregate node (IsAggregate)</p>
+<p><span style="background-color: lightblue; padding: 2px 6px; border-radius: 3px;">E</span> — Exported node (IsExported)</p>
+<p><span style="background-color: white; padding: 2px 6px; border-radius: 3px;">No color</span> — Non-leaf, non-aggregate, non-exported node</p>
+
+
 ### Example usage
 
 The below pic shows a trie after adding several `/24` prefixes under `10.0.0.0/20`.
@@ -66,6 +75,7 @@ The below pic shows a trie after adding several `/24` prefixes under `10.0.0.0/2
 The below pic shows the trie after withdrawing `10.0.4.0/24`:
 
 ![Screenshot](Benchmark.IpAggregation/images/trie2.png)
+
 
 ```csharp
 public static void VisualizeTrie()
@@ -102,15 +112,6 @@ public static void VisualizeTrie()
         withdrawnPrefixes);
 
     trie.ToDotGraphFile("trie_step2.dot");
-
-    // Add two more /24s and re-emit DOT
-    trie.PerformOperations(
-        new List<IPPrefix>{ new IPPrefix("10.0.10.0/24"), new IPPrefix("10.0.11.0/24") },
-        new List<IPPrefix>(),
-        aggregatesAdded,
-        withdrawnPrefixes);
-
-    trie.ToDotGraphFile("trie_step3.dot");
 }
 ```
 
@@ -120,7 +121,7 @@ Once you have `.dot` files, render them with:
 dot -Tpng trie_step1.dot -o trie_step1.png
 ```
 
-or
+(or)
 
 you can use online tools like [GraphVizOnline](https://dreampuf.github.io/GraphvizOnline/?engine=dot) to visualize directly in your browser.
 
@@ -178,7 +179,7 @@ dotnet build
 dotnet test
 ```
 
-To generate example visualizations, run the `VisualizeTrie` helper (see `Benchmark.IpAggregation/Program.cs::VisualizeTrie`) and render the produced `.dot` files using Graphviz.
+To generate example visualizations, run the `VisualizeTrie` helper (see `Benchmark.IpAggregation/Program.cs::VisualizeTrie`).
 
 ---
 
