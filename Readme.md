@@ -183,8 +183,8 @@ dotnet test
 ## Getting started
 
 ```bash
-git clone https://github.com/yourusername/ip-aggregation.git
-cd ip-aggregation
+git clone https://github.com/jjsridharan/IpAggregation.git
+cd IpAggregation
 dotnet build
 dotnet test
 ```
