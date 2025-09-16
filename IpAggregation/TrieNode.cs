@@ -25,12 +25,26 @@ namespace IpAggregation
         /// </summary>
         private bool IsSubTreeChanged { get; set; } = false;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TrieNode"/> class.
+        /// </summary>
+        /// <param name="prefix">The IP prefix associated with this node.</param>
+        /// <param name="parent">The parent node in the trie.</param>
         public TrieNode(IPPrefix prefix, TrieNode? parent = null)
         {
             this.Prefix = prefix;
             this.Parent = parent;
         }
 
+        /// <summary>
+        /// This method performs batch operations of adding and removing prefixes from the trie.
+        /// It takes lists of prefixes to add and remove, and updates the trie accordingly.
+        /// It also computes the affected aggregates and withdrawn prefixes.
+        /// </summary>
+        /// <param name="prefixesToAdd">The list of prefixes to add.</param>
+        /// <param name="prefixesToRemove">The list of prefixes to remove.</param>
+        /// <param name="aggregatesAdded">The list of aggregates added.</param>
+        /// <param name="aggregatesRemoved">The list of aggregates removed.</param>
         public void PerformOperations(List<IPPrefix> prefixesToAdd, List<IPPrefix> prefixesToRemove, List<IPPrefix> aggregatesAdded, List<IPPrefix> aggregatesRemoved)
         {
             foreach (IPPrefix prefix in prefixesToAdd)
@@ -271,12 +285,20 @@ namespace IpAggregation
             this.children[1]?.CollectAggregates(result);
         }
 
+        /// <summary>
+        /// Utility function to export the trie structure to a DOT graph file for visualization.
+        /// </summary>
+        /// <param name="fileName"></param>
         public void ToDotGraphFile(string fileName)
         {
             var content = ToDotGraph();
             File.WriteAllText(fileName, content);
         }
 
+        /// <summary>
+        /// Converts the trie structure to a DOT graph format string for visualization.
+        /// </summary>
+        /// <returns></returns>
         public string ToDotGraph()
         {
             var sb = new StringBuilder();
