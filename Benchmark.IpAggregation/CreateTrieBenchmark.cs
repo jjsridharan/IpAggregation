@@ -14,7 +14,7 @@ public class CreateTrieBenchmark
     }
 
     [Benchmark]
-    public void CreateTrieWith2MillionNodes()
+    public void CreateTrieWith1MillionNodes()
     {
         var trie = new TrieNode(new IPPrefix("0.0.0.0/0"));
         var aggregatesAdded = new List<IPPrefix>();

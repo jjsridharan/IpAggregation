@@ -9,6 +9,6 @@ Intel Xeon Platinum 8370C CPU 2.80GHz (Max: 2.79GHz), 1 CPU, 16 logical and 8 ph
 Runtime=.NET 8.0  Arguments=/nowarn:CS1591  
 
 ```
-| Method                      | Mean    | Error    | StdDev   | Gen0       | Gen1       | Gen2      | Allocated  |
-|---------------------------- |--------:|---------:|---------:|-----------:|-----------:|----------:|-----------:|
-| CreateTrieWith2MillionNodes | 3.064 s | 0.0525 s | 0.0491 s | 43000.0000 | 40000.0000 | 1000.0000 | 1014.72 MB |
+| Method                      | Mean    | Error    | StdDev   | Gen0       | Gen1       | Gen2      | Allocated |
+|---------------------------- |--------:|---------:|---------:|-----------:|-----------:|----------:|----------:|
+| CreateTrieWith2MillionNodes | 1.313 s | 0.0252 s | 0.0345 s | 16000.0000 | 15000.0000 | 1000.0000 | 366.22 MB |
