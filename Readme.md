@@ -1,8 +1,18 @@
 ﻿# IP Aggregation Library
 
-This repository provides a high-performance, incremental **Trie-based IP aggregation** implementation for both IPv4 and IPv6. It is designed for real-world, streaming updates where prefixes are continuously added and withdrawn (BGP, network telemetry pipelines, offline aggregation tasks, etc.).
+A high-performance, incremental **Trie-based IP aggregation library** for IPv4 and IPv6.
 
-This library is tested with large datasets (millions of prefixes) and optimized for low-latency incremental updates. Able to build 2 million node tries in under 3 seconds on a standard desktop. Incremental updates (add/remove) complete in microseconds. Refer to the [Benchmarking](#4-benchmarking-what-was-measured) section for detailed performance metrics. This also includes a class for BgpPrefix aggregation with attribute synthesis.
+It’s built for real-world scenarios where prefixes are constantly added and withdrawn — such as BGP, network telemetry pipelines, or offline aggregation tasks.
+
+**Key highlights:**
+
+* Handles large datasets (millions of prefixes).
+* **Builds and aggregates a 1M-node trie in \~1.3 seconds** on a standard desktop.
+* Performs incremental add/remove operations in **microseconds — faster than a packet round trip**.
+* Supports **BGP prefix aggregation with attribute synthesis**.
+
+See the [Benchmarking](#4-benchmarking-what-was-measured) section for detailed performance metrics.
+
 
 ---
 
@@ -149,7 +159,7 @@ Runtime=.NET 8.0  Arguments=/nowarn:CS1591
 
 | Method         |    Mean |    Error |   StdDev |       Gen0 |       Gen1 |      Gen2 |  Allocated |
 | -------------- | ------: | -------: | -------: | ---------: | ---------: | --------: | ---------: |
-| CreateTrieWith2MillionNodes | 2.938 s | 0.0261 s | 0.0232 s | 43000.0000 | 40000.0000 | 1000.0000 | 1014.72 MB |
+| CreateTrieWith1MillionNodes | 1.3 s | 0.0252 s | 0.0345 s | 16000.0000 | 15000.0000 | 1000.0000 | 366.22 MB |
 | Remove100NodesIncrementally | 97.31 us | 53.74 us | 50.27 us | - | - | - | 10.47 KB |
 
 ---
