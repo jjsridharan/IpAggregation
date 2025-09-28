@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="ipv4.txt">
+    <Content Include="Files\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToOutput>true</CopyToOutput>
     </Content>

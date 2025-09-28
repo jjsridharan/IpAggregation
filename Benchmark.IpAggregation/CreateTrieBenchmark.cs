@@ -10,7 +10,7 @@ public class CreateTrieBenchmark
     [GlobalSetup]
     public void Setup()
     {
-        _prefixes = Program.ReadPrefixes();
+        _prefixes = Program.ReadPrefixes("Files\\ipv4.txt");
     }
 
     [Benchmark]
