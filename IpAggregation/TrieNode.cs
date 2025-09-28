@@ -45,7 +45,7 @@ namespace IpAggregation
         /// <param name="prefixesToRemove">The list of prefixes to remove.</param>
         /// <param name="aggregatesAdded">The list of aggregates added.</param>
         /// <param name="aggregatesRemoved">The list of aggregates removed.</param>
-        public void PerformOperations(List<IPPrefix> prefixesToAdd, List<IPPrefix> prefixesToRemove, List<IPPrefix> aggregatesAdded, List<IPPrefix> aggregatesRemoved)
+        public void PerformOperations(IEnumerable<IPPrefix> prefixesToAdd, IEnumerable<IPPrefix> prefixesToRemove, List<IPPrefix> aggregatesAdded, List<IPPrefix> aggregatesRemoved)
         {
             foreach (IPPrefix prefix in prefixesToAdd)
             {

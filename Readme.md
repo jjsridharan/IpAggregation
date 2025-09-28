@@ -189,7 +189,11 @@ dotnet build
 dotnet test
 ```
 
+You can directly open the solution file in visual studio present under 'IpAggregation\IpAggregation.sln'.
+
 To generate example visualizations, run the `VisualizeTrie` helper (see `Benchmark.IpAggregation/Program.cs::VisualizeTrie`).
+
+Some utiliy functions are present in Bechmark.IpAggregation project.
 
 ---
 
