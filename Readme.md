@@ -7,14 +7,15 @@ It’s built for real-world scenarios where prefixes are constantly added and wi
 **Key highlights:**
 
 * Handles large datasets (millions of prefixes).
-* **Builds and aggregates a 1M-node trie in \~1.3 seconds** on a standard desktop.
+* **Builds and aggregates a 1M-node trie in ~2.15 seconds**, and **aggregates the full IPv4 (3.26 s) and IPv6 (1.09 s) internet routing tables (FIRT)** on a standard desktop.
 * Performs incremental add/remove operations in **microseconds — faster than a packet round trip**.
 * Supports **BGP prefix aggregation with attribute synthesis**.
+* FIRT data sourced from [IPv4](https://bgp.potaroo.net/as2.0/bgp-active.html) and [IPv6](https://bgp.potaroo.net/v6/as2.0/index.html).
 
-See the [Benchmarking](#4-benchmarking-what-was-measured) section for detailed performance metrics.
-
+See the [Benchmarking](#benchmarking-what-was-measured) section for detailed performance metrics.
 
 ---
+
 
 ## 1. Why IP Aggregation?
 
@@ -143,6 +144,7 @@ Benchmarks are implemented with **BenchmarkDotNet** and measure:
 
 * Bulk insert performance (N prefixes inserted from scratch).
 * Incremental add/remove throughput (streaming scenario).
+* Real-world performance on the **full internet routing table (FIRT)**.
 
 ### Benchmark environment
 
@@ -155,13 +157,35 @@ Job-YTMLKF : .NET 8.0.20 (8.0.2025.41914), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
 Runtime=.NET 8.0  Arguments=/nowarn:CS1591
 ```
 
-### Results
+### Performance on typical datasets
 
-| Method         |    Mean |    Error |   StdDev |       Gen0 |       Gen1 |      Gen2 |  Allocated |
-| -------------- | ------: | -------: | -------: | ---------: | ---------: | --------: | ---------: |
-| CreateTrieWith1MillionNodes | 1.3 s | 0.0252 s | 0.0345 s | 16000.0000 | 15000.0000 | 1000.0000 | 366.22 MB |
-| Remove100NodesIncrementally | 97.31 us | 53.74 us | 50.27 us | - | - | - | 10.47 KB |
+| Method                      |     Mean |    Error |   StdDev |       Gen0 |       Gen1 |      Gen2 | Allocated |
+| --------------------------- | -------: | -------: | -------: | ---------: | ---------: | --------: | --------: |
+| CreateTrieWith1MillionNodes |  2.148 s | 0.0238 s | 0.0199 s | 29000.0000 | 27000.0000 | 2000.0000 | 648.51 MB |
+| Remove100NodesIncrementally | 97.31 us | 53.74 us | 50.27 us |          - |          - |         - |  10.47 KB |
 
+---
+
+### Performance on Full Internet Routing Table (FIRT)
+
+The library efficiently handles the **complete IPv4 and IPv6 internet routing tables**, performing full aggregation in **seconds**, demonstrating real-world readiness for BGP and network telemetry pipelines.
+
+**IPv4 FIRT:**
+
+* Entries: 1,028,861
+* Aggregated: 88,602
+
+**IPv6 FIRT:**
+
+* Entries: 235,850
+* Aggregated: 24,006
+
+| Method           |    Mean |    Error |   StdDev |       Gen0 |       Gen1 |      Gen2 | Allocated |
+| ---------------- | ------: | -------: | -------: | ---------: | ---------: | --------: | --------: |
+| CreateV4FirtTrie | 3.258 s | 0.0608 s | 0.0624 s | 48000.0000 | 44000.0000 | 2000.0000 |   1.08 GB |
+| CreateV6FirtTrie | 1.087 s | 0.0115 s | 0.0102 s | 20000.0000 | 19000.0000 | 2000.0000 |    434 MB |
+
+> ⚡ These results show that the library **scales efficiently to millions of prefixes**, making it suitable for high-performance BGP aggregation, real-time telemetry, and other large-scale network applications.
 ---
 
 ## 5. Unit tests
@@ -189,13 +213,34 @@ dotnet build
 dotnet test
 ```
 
-You can directly open the solution file in visual studio present under 'IpAggregation\IpAggregation.sln'.
+You can directly open the solution file in Visual Studio (`IpAggregation/IpAggregation.sln`).
 
 To generate example visualizations, run the `VisualizeTrie` helper (see `Benchmark.IpAggregation/Program.cs::VisualizeTrie`).
 
-Some utiliy functions are present in Bechmark.IpAggregation project.
+Some utility functions are present in the `Benchmark.IpAggregation` project.
 
----
+### Large file support (Git LFS)
+
+This repository stores some benchmark data files (>50 MB) using [Git LFS](https://git-lfs.github.com/).
+
+* **Before cloning** (recommended):
+
+  ```bash
+  git lfs install
+  ```
+
+  Then clone as usual—large files will be downloaded automatically.
+
+* **If you already cloned without LFS**:
+  Install Git LFS, then run:
+
+  ```bash
+  git lfs install
+  git lfs pull
+  git lfs checkout
+  ```
+
+to fetch the actual large files and replace the small pointer files with the real content.
 
 ## Contributing
 
