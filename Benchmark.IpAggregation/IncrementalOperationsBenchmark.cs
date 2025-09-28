@@ -7,7 +7,6 @@ using System.Linq;
 namespace Bechmark.IpAggregation
 {
     [MemoryDiagnoser]
-    [SimpleJob(RuntimeMoniker.Net80, launchCount: 1, warmupCount: 1, invocationCount: 1)]
     [MaxIterationCount(16)] // limit iterations for faster runs
     public class IncrementalOperationsBenchmark
     {

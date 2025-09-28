@@ -11,4 +11,4 @@ Runtime=.NET 8.0  Arguments=/nowarn:CS1591
 ```
 | Method                      | Mean    | Error    | StdDev   | Gen0       | Gen1       | Gen2      | Allocated |
 |---------------------------- |--------:|---------:|---------:|-----------:|-----------:|----------:|----------:|
-| CreateTrieWith1MillionNodes | 2.073 s | 0.0249 s | 0.0233 s | 29000.0000 | 27000.0000 | 2000.0000 | 648.51 MB |
+| CreateTrieWith1MillionNodes | 2.148 s | 0.0238 s | 0.0199 s | 29000.0000 | 27000.0000 | 2000.0000 | 648.51 MB |

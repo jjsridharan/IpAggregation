@@ -45,3 +45,6 @@ TestResults/
 # Ignore all bin/ and obj/ recursively
 **/bin/
 **/obj/
+
+
+**/Benchmark.IpAggregation/BenchmarkDotNet.Artifacts/
