@@ -13,6 +13,9 @@ public class FirtV4CreateTrieBenchmark
         _prefixes = Program.ReadPrefixes("Files\\bgptablev4_cleaned.txt");
     }
 
+    /// <summary>
+    /// Full Internet Routing Table (FIRT) IPv4 trie creation benchmark.
+    /// </summary>
     [Benchmark]
     public void CreateV4FirtTrie()
     {

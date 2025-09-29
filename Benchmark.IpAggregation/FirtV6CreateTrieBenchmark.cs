@@ -13,7 +13,10 @@ public class FirtCreateTrieBenchmark
         _prefixes = Program.ReadPrefixes("Files\\bgptablev6_cleaned.txt");
     }
 
-    [Benchmark]
+    /// <summary>
+    /// Full Internet Routing Table (FIRT) IPv6 trie creation benchmark.
+    /// </summary>
+    [Benchmark]   
     public void CreateV6FirtTrie()
     {
         var trie = new TrieNode(new IPPrefix("::/0"));
