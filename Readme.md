@@ -12,7 +12,7 @@ It’s built for real-world scenarios where prefixes are constantly added and wi
 * Supports **BGP prefix aggregation with attribute synthesis**.
 * FIRT data sourced from [IPv4](https://bgp.potaroo.net/as2.0/bgp-active.html) and [IPv6](https://bgp.potaroo.net/v6/as2.0/index.html).
 
-See the [Benchmarking](#benchmarking-what-was-measured) section for detailed performance metrics.
+See the [Benchmarking](#4-benchmarking-what-was-measured) section for detailed performance metrics.
 
 ---
 
@@ -251,5 +251,6 @@ Open issues for bugs or feature requests. PRs should include tests and update th
 ## License
 
 MIT — see `LICENSE`.
+
 
 *End of README.*
