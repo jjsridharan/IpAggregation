@@ -5,6 +5,9 @@ using System.Text;
 
 namespace IpAggregation
 {
+    /// <summary>
+    /// TrieNode represents a node in the IP prefix trie.
+    /// </summary>
     internal class TrieNode
     {
         public IPPrefix Prefix { get; private set; }
