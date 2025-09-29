@@ -14,6 +14,9 @@ namespace IPAggregatorTests
     [TestClass]
     public class FirtAggregationTests
     {
+        /// <summary>
+        /// Test method to validate FIRT IPv4 aggregation.
+        /// </summary>
         [TestMethod]
         public void TestV4FirtAggregation()
         {
@@ -33,6 +36,9 @@ namespace IPAggregatorTests
             Assert.IsTrue(exportedLines.All(prefix => exportedPrefixes.Contains(prefix)));
         }
 
+        /// <summary>
+        /// Test method to validate FIRT IPv6 aggregation.
+        /// </summary>
         [TestMethod]
         public void TestV6FirtAggregation()
         {
